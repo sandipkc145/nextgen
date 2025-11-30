@@ -5,7 +5,7 @@ NextGen is a modern, responsive, multi-page E-Learning platform built for the Ne
 ---
 
 ## 🌍 Live Website  
-👉 **[View NextGen E-Learning Platform](https://sandipkc145.github.io/next-Gen/)**
+👉 **[View NextGen E-Learning Platform](https://sandipkc145.github.io/nextgen/)**
 
 ---
 

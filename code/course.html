@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Courses & Categories</title>
+
+  <!-- Remix Icon CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+   <link rel="icon" href="https://png.pngtree.com/png-vector/20211028/ourmid/pngtree-letter-n-logo-png-image_3990277.png">
+
+  <style>
+    * { box-sizing: border-box; }
+     body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      background: #f9f9f9;
+      color: #222222;
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+    
+     /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(239, 235, 235, 0);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+      flex-wrap: wrap;
+    }
+
+    nav.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      opacity: 0.95;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4b6cb7;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+      transition: max-height 0.4s ease;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li::before {
+      content: " ";
+      width: 0px;
+      height: 2px;
+      position: absolute;
+      bottom: 0;
+      background-color: blue;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li:hover::before {
+      width: 100%;
+    }
+
+    nav ul li:nth-child(2) {
+      background: linear-gradient(90deg, red);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .nav-buttons button {
+      margin-left: 1rem;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .join-btn {
+      background: #0f53f3ee;
+      color: #fff;
+    }
+
+    .join-btn:hover {
+      color: #0f53f3ee;
+      background-color: white;
+      border: 2px solid #0f53f3ee;
+    }
+
+    /* Hamburger Button - hidden on desktop */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 1024px) {
+      nav .logo {
+        font-size: 1.3rem;
+      }
+
+      /* Hide login button on tablet/mobile */
+      .nav-buttons {
+        display: none;
+      }
+
+      /* Hamburger shown */
+      .hamburger {
+        display: block;
+      }
+
+      /* Mobile menu styling */
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;  /* collapsed by default */
+        overflow: hidden;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        
+      }
+
+      nav ul.show {
+        max-height: 500px; /* expand to show all items */
+      }
+
+      nav ul li {
+    
+        margin-left: 80%;
+        margin-right: 5px;
+       
+
+        padding: 0.8rem 0;
+        border-top: 1px solid #ddd;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      nav .logo {
+        font-size: 1.1rem;
+      }
+
+      nav ul li {
+        padding: 0.6rem 0;
+      }
+    }
+
+    /* Section styling */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    
+    @media (min-width: 768px) {
+      .section {
+        padding: 3.25rem 1rem;
+      }
+    }
+
+    /* Top icon */
+    .icon-box {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #4f46e5, #9333ea);
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 1.1rem;
+      color: #fff;
+      font-size: 1.8rem;
+      box-shadow: 0 8px 18px rgba(79,70,229,.35);
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 650;
+      margin: 0 0 .7rem;
+      letter-spacing: .2px;
+    }
+    
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 2.6rem;
+      }
+    }
+    
+    .subtitle {
+      font-size: 1rem;
+      color: #555;
+      margin: 0 auto 2rem;
+      max-width: 720px;
+    }
+
+    /* Quotes */
+    .quotes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .quote-card {
+      background: #f7f8ff;
+      padding: 1.25rem;
+      border-radius: 14px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0,0,0,.05);
+      border: 1px solid rgba(79,70,229,.08);
+    }
+    
+    .quote-card:nth-child(2){ 
+      background: #faf5ff; 
+    }
+    
+    .quote-text { 
+      font-size: 1.5rem; 
+      font-weight: 600; 
+      margin-bottom: .4rem; 
+    }
+    
+    .quote-sub { 
+      font-size: .87rem; 
+      color: #666; 
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+      gap: 1.5rem;
+      margin-top: 1.2rem;
+    }
+    
+    .stat-box {
+      text-align: center;
+      padding: 1rem .5rem;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,.05);
+      border: 1px solid #f0f0f0;
+    }
+    
+    .stat-icon { 
+      font-size: 1.8rem; 
+      margin-bottom: .45rem; 
+      color: #4f46e5; 
+    }
+    
+    .stat-value { 
+      font-size: 1.35rem; 
+      font-weight: 600; 
+    }
+    
+    .stat-label { 
+      font-size: .9rem; 
+      color: #555; 
+    }
+
+    /* Badges row */
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: .6rem;
+      margin: 2rem 0 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .badge {
+      font-size: .8rem;
+      padding: .35rem .8rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+    
+    .badge.green { 
+      background: #e9fce9; 
+      color: #15803d; 
+      border-color: #d6f7d6; 
+    }
+    
+    .badge.yellow{ 
+      background: #fff7e0; 
+      color: #b45309; 
+      border-color: #fee8b2; 
+    }
+
+    /* Subsection titles */
+    .subhead {
+      font-size: 1.4rem;
+      font-weight: 650;
+      margin: 2rem 0 .4rem;
+      letter-spacing: .2px;
+    }
+    
+    @media (min-width: 768px) {
+      .subhead {
+        font-size: 1.8rem;
+      }
+    }
+    
+    .subhead-sub {
+      font-size: .98rem;
+      color: #555;
+      margin: 0 auto 1.5rem;
+      max-width: 760px;
+    }
+
+    /* Category grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      align-items: stretch;
+    }
+    
+    .card {
+      background: #f9fafb;
+      border-radius: 14px;
+      padding: 1.4rem;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(0,0,0,.05);
+      position: relative;
+      transition: transform .18s ease, box-shadow .2s ease;
+      border: 1px solid #eef1f4;
+    }
+    
+    .card:hover { 
+      transform: translateY(-4px); 
+      box-shadow: 0 10px 22px rgba(0,0,0,.1); 
+    }
+
+    .card .icon-box {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      font-size: 1.45rem;
+      margin-bottom: 1rem;
+      box-shadow: none;
+      background-color: white;
+    }
+    
+    .blue   { background: #eef4ff; color: #2563eb; }
+    .purple { background: #f5f3ff; color: #9333ea; }
+    .green  { background: #ecfdf5; color: #059669; }
+    .orange { background: #fff7ed; color: #ea580c; }
+    .gray   { background: #f3f4f6; color: #6b7280; }
+
+    .card h3 { 
+      font-size: 1.12rem; 
+      font-weight: 650; 
+      margin: 0 0 .3rem; 
+    }
+    
+    .card p  { 
+      font-size: .94rem; 
+      color: #555; 
+      margin: 0 0 .9rem; 
+    }
+    
+    .info    { 
+      font-size: .86rem; 
+      margin-bottom: .25rem; 
+    }
+    
+    .info strong { 
+      font-weight: 700; 
+    }
+
+    .link {
+      font-size: .92rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      margin-top: .4rem;
+    }
+    
+    .blue   .link{ color: #2563eb; }
+    .purple .link{ color: #9333ea; }
+    .green  .link{ color: #059669; }
+    .orange .link{ color: #ea580c; }
+    .gray   .link{ color: #6b7280; }
+
+    .coming-soon {
+      position: absolute;
+      top: 1rem; 
+      right: 1rem;
+      background: #fef3c7;
+      color: #b45309;
+      font-size: .75rem;
+      padding: .32rem .7rem;
+      border-radius: 7px;
+      font-weight: 800;
+      border: 1px solid #fde7ab;
+    }
+
+    /* FAQ section */
+    #faq-center{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 5%;
+    }
+
+    .faq-container {
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .faq-header {
+      margin-bottom: 30px;
+    }
+
+    .faq-header img {
+      width: 40px;
+      margin-bottom: 10px;
+    }
+
+    .faq-header h2 {
+      font-size: 24px;
+      margin: 5px 0;
+      font-weight: bold;
+    }
+
+    .faq-header p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .accordion {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      text-align: left;
+    }
+
+    details {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 12px 16px;
+    }
+
+    summary {
+      font-size: 15px;
+      font-weight: 600;
+      list-style: none;
+      outline: none;
+    }
+
+    details[open] {
+      background: #f9f9f9;
+    }
+
+    details summary::after {
+      content: "▼";
+      float: right;
+      font-size: 12px;
+      transition: transform 0.3s;
+    }
+
+    details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    details p {
+      margin: 10px 0 0;
+      color: #555;
+      line-height: 1.6;
+      font-size: 14px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    details[open] p {
+      max-height: 500px;
+      opacity: 1;
+      padding-top: 8px;
+    }
+
+    .faq-footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .faq-footer a {
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .faq-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer section */
+    .footer {
+      width: 100%;
+      background: linear-gradient(135deg, #0d1a3a, #1a3b87);
+      color: #fff;
+      position: relative;
+    
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+
+    /* Top Row: Newsletter + Links + Support + Categories */
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+
+    .footer-top > div {
+      flex: 1 1 220px;
+      min-width: 200px;
+    }
+
+    /* Newsletter */
+    .footer-newsletter h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-newsletter p {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-newsletter form {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-newsletter input[type="email"] {
+      flex: 1;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .footer-newsletter button {
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(90deg,#ff77e1,#7a5cff,#22d3ee);
+      color: #fff;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .footer-newsletter button:hover {
+      opacity: 0.8;
+    }
+
+    /* Links / Support / Categories */
+    .footer-links h3,
+    .footer-support h3,
+    .footer-categories h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links ul,
+    .footer-support ul,
+    .footer-categories ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li a,
+    .footer-support li a,
+    .footer-categories li a {
+      display: block;
+      padding: 0.3rem 0;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links li a:hover,
+    .footer-support li a:hover,
+    .footer-categories li a:hover {
+      color: #22d3ee;
+    }
+
+    /* Middle Row: Logo + Motive + Contact */
+    .footer-middle {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+      margin: 3rem 0;
+    }
+    
+    .footer-middle-text{
+      margin-top: -20px;
+    }
+
+    .footer-middle .footer-middle-text h2 span {
+      font-size: 2rem;
+      font-weight: bold;
+      background: linear-gradient(90deg,#ff77e1,#7a5cff,#22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-middle .footer-middle-text p {
+      font-size: 1rem;
+      line-height: 1.5;
+      max-width: 600px;
+    }
+
+    /* Contact Info Row */
+    .footer-contact {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .footer-contact a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-contact a:hover {
+      color: #22d3ee;
+    }
+
+    /* Social Media Icons Row */
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg,#22d3ee,#7a5cff);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .footer-social a:hover {
+      transform: scale(1.2);
+      background: linear-gradient(135deg,#ff77e1,#ffe600);
+    }
+
+    /* Bottom Row: policy / copyright */
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      margin: 0 5%;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      opacity: 0.85;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 1rem;
+      gap: 1rem;
+    }
+
+.footer-bottom >div a{
+  text-decoration: none;
+  color: white;
+}
+.footer-bottom >div a:hover{
+  color: rgb(144, 192, 232);
+}
+
+    @media (max-width: 768px) {
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">NextGen</div>
+    <button class="hamburger">&#9776;</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="course.html">Courses</a></li>
+      <li><a href="mentor.html">Mentor</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <button class="join-btn">Log in</button>
+    </div>
+  </nav>
+
+
+  <section class="section" id="explore">
+    <!-- Top Icon -->
+    <div class="icon-box"><i class="ri-book-open-fill"></i></div>
+
+    <!-- Title -->
+    <h1>Explore Our Courses</h1>
+    <p class="subtitle">
+      Master cutting-edge technologies with our 10 meticulously crafted courses designed for Nepal's future tech leaders.
+    </p>
+
+    <!-- Quotes Row -->
+    <div class="quotes">
+      <div class="quote-card">
+        <div class="quote-text">"We don't sell quantity, we teach quality."</div>
+        <div class="quote-sub">Our Core Philosophy</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-text">"Affordable in price, expensive in quality."</div>
+        <div class="quote-sub">Our Promise</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats" id="view-courses">
+      <div class="stat-box">
+        <div class="stat-icon"><i class="ri-book-2-fill"></i></div>
+        <div class="stat-value">10</div>
+        <div class="stat-label">Expert Courses</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-icon"><i class="ri-team-fill"></i></div>
+        <div class="stat-value">8,500+</div>
+        <div class="stat-label">Students</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-icon"><i class="ri-time-fill"></i></div>
+        <div class="stat-value">350+</div>
+        <div class="stat-label">Hours</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-icon"><i class="ri-star-fill"></i></div>
+        <div class="stat-value">4.9</div>
+        <div class="stat-label">Rating</div>
+      </div>
+    </div>
+
+
+    <!-- Divider titles for the grid below -->
+    <h2 class="subhead" id="category-courses">Browse by Category</h2>
+    <p class="subhead-sub">4 active categories with more coming soon — quality education in focused domains.</p>
+
+    <!-- Badges -->
+    <div class="badges">
+      <span class="badge green">4 Active Categories</span>
+      <span class="badge yellow">2 Coming Soon</span>
+    </div>
+
+    <!-- Category Grid (filterable) -->
+    <div class="grid" id="categoryGrid">
+      <!-- Programming -->
+      <article class="card blue">
+        <div class="icon-box blue"><i class="ri-code-s-slash-fill"></i></div>
+        <h3>Programming</h3>
+        <p>Master modern programming languages</p>
+        <div class="info">Courses: <strong>3 Courses</strong></div>
+        <div class="info">Students: <strong>3,200+</strong></div>
+        <a href="programming.html" class="link">View Courses <i class="ri-arrow-right-line" aria-hidden="true"></i></a>
+      </article>
+
+      <!-- UI/UX Design -->
+      <article class="card purple">
+        <div class="icon-box purple"><i class="ri-palette-fill"></i></div>
+        <h3>UI/UX Design</h3>
+        <p>Create beautiful, user-friendly designs</p>
+        <div class="info">Courses: <strong>2 Courses</strong></div>
+        <div class="info">Students: <strong>1,800+</strong></div>
+        <a href="ui.html" class="link">View Courses <i class="ri-arrow-right-line" aria-hidden="true"></i></a>
+      </article>
+
+      <!-- Data Science -->
+      <article class="card green">
+        <div class="icon-box green"><i class="ri-bar-chart-2-fill"></i></div>
+        <h3>Data Science</h3>
+        <p>Analyze data and build ML models</p>
+        <div class="info">Courses: <strong>3 Courses</strong></div>
+        <div class="info">Students: <strong>2,100+</strong></div>
+        <a href="data.html" class="link">View Courses <i class="ri-arrow-right-line" aria-hidden="true"></i></a>
+      </article>
+
+      <!-- Mobile Dev -->
+      <article class="card orange">
+        <div class="icon-box orange"><i class="ri-smartphone-fill"></i></div>
+        <h3>Marketing</h3>
+        <p>Learn How to do business by using Marketing Ideas</p>
+        <div class="info">Courses: <strong>2 Courses</strong></div>
+        <div class="info">Students: <strong>1,400+</strong></div>
+        <a href="buisness.html" class="link">View Courses <i class="ri-arrow-right-line" aria-hidden="true"></i></a>
+      </article>
+
+      <!-- Cybersecurity (Coming Soon) -->
+      <article class="card gray"
+        data-category="cybersecurity"
+        data-level="intermediate,advanced"
+        data-keywords="security pentesting network forensics"
+        data-comingsoon="true">
+        <div class="icon-box gray"><i class="ri-shield-keyhole-fill"></i></div>
+        <h3>Cybersecurity</h3>
+        <p>Protect systems and data</p>
+        <div class="info">Status: <strong>Coming Soon</strong></div>
+        <div class="info">Launch: <strong>Launching Q2 2025</strong></div>
+        <span class="coming-soon">Coming Soon</span>
+      </article>
+
+      <!-- Cloud Computing (Coming Soon) -->
+      <article class="card gray"
+        data-category="cloud"
+        data-level="intermediate,advanced"
+        data-keywords="aws azure gcp devops kubernetes"
+        data-comingsoon="true">
+        <div class="icon-box gray"><i class="ri-cloud-fill"></i></div>
+        <h3>Cloud Computing</h3>
+        <p>Master AWS, Azure, and GCP</p>
+        <div class="info">Status: <strong>Coming Soon</strong></div>
+        <div class="info">Launch: <strong>Launching Q3 2025</strong></div>
+        <span class="coming-soon">Coming Soon</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ section -->
+  <section id="faq-center"> 
+    <div class="faq-container">
+      <div class="faq-header">
+        <img src="https://img.icons8.com/ios-filled/50/000000/graduation-cap.png" alt="Icon">
+        <h2>Course FAQs</h2>
+        <p>Everything you need to know about our courses and learning experience</p>
+      </div>
+
+      <div class="accordion">
+        <details>
+          <summary>What are the prerequisites for enrolling in courses?</summary>
+          <p>Most of our beginner-friendly courses don't require prior technical knowledge. However, having basic computer literacy, the ability to navigate the internet, and familiarity with productivity tools like Word or Excel will be very helpful. For more advanced tracks, such as data science, web development, or cloud computing, we recommend some prior exposure to coding fundamentals, mathematics, or IT concepts. Don't worry—before you enroll, our advisors can help you choose the right course based on your background and career goals.</p>
+        </details>
+
+        <details>
+          <summary>How do the hands-on projects work?</summary>
+          <p>Every course includes carefully designed projects that replicate real-world challenges. Instead of just reading theory, you will apply what you've learned in practical scenarios. For example, in web development, you might build a complete website or app; in data science, you'll work with datasets to create predictive models; and in business analysis, you'll analyze case studies and produce reports. These projects help you build a professional portfolio, which you can showcase to future employers to demonstrate your skills.</p>
+        </details>
+
+        <details>
+          <summary>What kind of career support do you provide?</summary>
+          <p>Our career services are designed to guide you from learning to employment. We offer one-on-one mentorship, resume and LinkedIn profile reviews, mock interviews, and access to exclusive job boards. We also collaborate with industry recruiters and companies to provide networking opportunities and hiring drives. Many of our learners have secured positions in reputable organizations thanks to this dedicated support.</p>
+        </details>
+
+        <details>
+          <summary>Are the certificates recognized by employers?</summary>
+          <p>Yes, our certificates are widely recognized by employers across industries. They serve as proof of your commitment to upskilling and your ability to work with the tools and technologies covered in the course. Many companies value demonstrated practical skills over formal degrees, and our courses are designed to bridge that gap. Employers especially appreciate the hands-on project work that validates your capabilities.</p>
+        </details>
+
+        <details>
+          <summary>Can I study while working full-time?</summary>
+          <p>Absolutely! Our programs are designed with working professionals in mind. The courses are flexible and self-paced, allowing you to study at your convenience. Weekly live sessions and recorded content mean you won't miss out even if you have a busy schedule. Most learners dedicate 5–10 hours per week, and many successfully balance their studies with full-time jobs and personal commitments.</p>
+        </details>
+
+        <details>
+          <summary>What technology and software will I need?</summary>
+          <p>You'll need a laptop or desktop with at least 4 GB of RAM, a stable internet connection, and a modern web browser like Chrome or Firefox. Depending on your course, we'll provide free access to licensed software and tools or guide you through installing open-source alternatives. All instructions are beginner-friendly, so even if you're not tech-savvy, you'll be able to set up everything with ease.</p>
+        </details>
+
+        <details>
+          <summary>Do you offer installment payment options?</summary>
+          <p>Yes, we believe education should be accessible to everyone. We provide flexible payment options, including monthly installments and no-cost EMI plans (where available). You can also apply for scholarships and discounts during certain enrollment periods. Our goal is to ensure that financial constraints don't hold you back from upgrading your skills.</p>
+        </details>
+
+        <details>
+          <summary>How often are course materials updated?</summary>
+          <p>Technology evolves rapidly, and so do our courses. We review and update our course content at least twice a year to ensure it reflects the latest industry practices, tools, and frameworks. Additionally, you'll gain lifetime access to course updates, so you'll always stay ahead in your field without needing to re-enroll.</p>
+        </details>
+
+        <details>
+          <summary>Can I get a refund if I'm not satisfied?</summary>
+          <p>Yes, we offer a satisfaction guarantee. If you feel the course doesn't meet your expectations, you can request a refund within the first 7–14 days (depending on the program). We want you to feel confident in your investment, and our team will work with you to resolve any issues before processing a refund.</p>
+        </details>
+
+        <details>
+          <summary>Do you provide mentorship during the course?</summary>
+          <p>Yes! Each learner is assigned a dedicated mentor who is an industry professional with years of real-world experience. Mentors provide guidance on technical concepts, project feedback, and career advice. They help you stay motivated, accountable, and on track to achieve your learning and career goals. Having a mentor means you're never alone in your learning journey.</p>
+        </details>
+      </div>
+
+      <div class="faq-footer">
+        Still have questions? <a href="#">Schedule a free consultation call</a> with our academic advisors.
+      </div>
+    </div>
+  </section>
+
+  <!-- footer section -->
+ <footer class="footer">
+
+  <!-- Top Row -->
+  <div class="footer-top">
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+      <h3>Subscribe to our Newsletter</h3>
+      <p>Get updates about new courses and offers.</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="course.html">Courses</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Support / FAQ -->
+    <div class="footer-support">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="course.html#faq-center">FAQ</a></li>
+        <li><a href="contact.html#help">Help</a></li>
+        <li><a href="about.html#">Our Journey</a></li>
+        <li><a href="about.html#team">Our Team</a></li>
+      </ul>
+    </div>
+
+    <!-- Categories -->
+    <div class="footer-categories">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="programming.html">Programming and Tech</a></li>
+        <li><a href="buisness.html">Business and Marketing</a></li>
+        <li><a href="ui.html">Design and Creativity</a></li>
+        <li><a href="data.html">Data science and AI</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Middle Row -->
+  <div class="footer-middle">
+    <div class="footer-middle-text">
+      <h2><span>Next</span>Gen</h2>
+      <p>NextGen is Nepal’s #1 platform for affordable and future-ready e-learning courses, bridging education and technology for everyone.</p>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-contact">
+      <a href="mailto:info@nextgen.com"><i class="ri-mail-line"></i> info@nextgen.com</a>
+      <a href="https://wa.me/977981234567"><i class="ri-whatsapp-line"></i> +977 981234567</a>
+      <a href="#"><i class="ri-map-pin-line"></i> Kathmandu, Nepal</a>
+    </div>
+
+    <!-- Social Media Icons Row -->
+    <div class="footer-social">
+      <a href="https://www.youtube.com/"><i class="ri-youtube-fill"></i></a>
+      <a href="https://www.facebook.com/"><i class="ri-facebook-fill"></i></a>
+      <a href="https://www.linkedin.com/"><i class="ri-linkedin-fill"></i></a>
+      <a href="https://www.instagram.com/"><i class="ri-instagram-fill"></i></a>
+    </div>
+  </div>
+
+  <!-- Bottom Row -->
+  <div class="footer-bottom">
+    <div>Made in Nepal with 💖</div>
+    <div> <a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a>  | <a href="#">Terms & Conditions</a></div>
+    <div>© 2025 SKC. All rights reserved.</div>
+  </div>
+
+</footer>
+
+  <script>
+        // Scroll effect
+    const navbar = document.querySelector("nav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    // Hamburger toggle with slide down effect
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector("nav ul");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+    // login code
+    
+var logBtn = document.getElementsByClassName("join-btn")[0]; 
+logBtn.addEventListener("click",()=>{
+  window.location.href="login.html";
+})
+
+   
+  </script>
+</body>
+</html>

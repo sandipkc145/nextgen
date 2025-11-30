@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="icon" href="https://png.pngtree.com/png-vector/20211028/ourmid/pngtree-letter-n-logo-png-image_3990277.png">
+
+   <style>
+    /* Reset and Global Styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    color: white;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+/* Login Navigation */
+#login_nav h2 {
+    position: fixed;
+    margin-top: 30px;
+    font-weight: 50;
+    font-size: 45px;
+}
+
+#logo-login {
+    display: flex;
+}
+
+/* Wrapper Styles */
+#wrapper-login,
+#wrapper-register {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#wrapper-register {
+    display: none;
+}
+
+/* Login Container */
+.login-container {
+    background-color: rgb(26, 25, 25);
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0px 5px 1px 2px rgb(34, 34, 34);
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px auto;
+    border: none;
+    border-bottom: 3px solid #ccc;
+    border-radius: 3px;
+    background: rgb(26, 25, 25);
+    color: white;
+    font-size: 18px;
+    outline: none;
+}
+
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="text"]:hover {
+    border-bottom: 3px solid #007bff;
+}
+
+/* Remember Me Label */
+#remlabel {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+/* Login Button */
+.loginbutton {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.loginbutton:hover {
+    background-color: #0056b3;
+}
+
+/* Signup Link */
+.signup-link {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.signup-link a {
+    color: #58afff;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Other Options */
+#other_option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+#other_option_button ul li {
+    list-style: none;
+    border: 1px solid #868181;
+    height: 40px;
+    margin-bottom: 15px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 10px;
+    width: 280px;
+}
+
+#other_option_button ul li:hover {
+    background-color: rgb(44, 43, 43);
+}
+
+#other_option_button ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.fa-brands {
+    padding-left: 5px;
+    color: white;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: #fff;
+    padding: 15px 20px;
+    text-align: center;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+#last_div ul {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0;
+}
+
+#last_div ul#list_one li {
+    display: inline;
+    margin: 0 5px;
+}
+
+#last_div ul#list_one li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#last_div ul#list_one li a:hover {
+    text-decoration: underline;
+}
+
+#last_div ul#list_two p {
+    margin: 5px 0 0 0;
+    color: #ccc;
+}
+
+   </style>
+</head>
+<body>
+
+<header>
+    <nav id="login_nav">
+        <div id="logo-login"><h2>NextGen Account</h2></div>
+    </nav>
+</header>
+
+<main>
+    <!-- LOGIN FORM -->
+    <div id="wrapper-login"> 
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="loginForm" autocomplete="off">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="abcd145@gmail.com" required />
+                </div>
+                <div class="form-group">
+                    <label for="current-password">Password</label>
+                    <input type="password" id="current-password" name="current-password" placeholder="Password" required />
+                </div>
+                <div id="remlabel">
+                    <label for="remember"> Remember Me</label>
+                    <input type="checkbox" id="remember">
+                </div>
+                <button class="loginbutton" type="submit">Login</button>
+            </form>
+            <div class="signup-link">
+                <p>Don't have an account?</p> <a id="sign_up" href="#">Sign up</a>
+            </div>
+            <div id="other_option">
+                <h2>OR</h2>
+                <div id="other_option_button">
+                    <ul>
+                        <li><a href="#"><i class="fa-brands fa-facebook"></i> Continue with Facebook</a></li>
+                        <li><a href="#"><i class="fa-brands fa-google"></i> Continue with Google</a></li>
+                        <li><a href="#"><i class="fa-brands fa-apple"></i> Continue with Apple</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIGNUP FORM -->
+    <div id="wrapper-register"> 
+        <div class="login-container">
+            <h2>Create your Skill Shikshya Account</h2>
+            <form id="signupForm" autocomplete="off">
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" maxlength="20" name="first_name" id="first_name" required>
+                    <label for="last_name">Last Name</label>
+                    <input type="text" maxlength="20" name="last_name" id="last_name" required>
+                    <label for="new-email">Email</label>
+                    <input type="email" id="new-email" name="email" placeholder="abcd145@gmail.com" required />
+                </div>
+                <div class="form-group">
+                    <label for="new-password">Password</label>
+                    <input type="password" id="new-password" name="new-password" placeholder="Password" required/>
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required />
+                </div>
+                <button class="loginbutton" type="submit">Sign up</button>
+            </form>
+            <div class="signup-link">
+                <p>Do you have an account?</p> <a id="login" href="#">Login</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div id="last_div">  
+        <ul id="list_one">
+            <li><a href="#" target="_blank">Privacy Policy |</a></li>
+            <li><a href="#" target="_blank">Terms & Conditions |</a></li>
+            <li><a href="contact.html" target="_blank">Contact us |</a></li>
+            <li><a href="about.html" target="_blank">About our work |</a></li>
+        </ul>
+        <ul id="list_two">
+            <p>Made with ❤️ in Nepal &copy; NextGen</p>
+        </ul>
+    </div>
+</footer>
+
+<script>
+    const signup_button = document.getElementById("sign_up");
+    const login_button = document.getElementById("login");
+
+    // Toggle forms
+    signup_button.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("wrapper-register").style.display = "flex";
+        document.getElementById("wrapper-login").style.display = "none";
+    });
+
+    login_button.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("wrapper-register").style.display = "none";
+        document.getElementById("wrapper-login").style.display = "flex";
+    });
+
+    // Login form submit
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        let email = document.getElementById("email").value;
+        let username = email.split("@")[0];
+        localStorage.setItem("studentName", username);
+        window.location.href = "sd.html"; // Redirect to dashboard
+    });
+
+    // Optional: signup form submit
+    document.getElementById("signupForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        let email = document.getElementById("new-email").value;
+        let username = email.split("@")[0];
+        localStorage.setItem("studentName", username);
+        window.location.href = "sd.html"; // Redirect to dashboard after signup
+    });
+
+    //for sign up
+document.addEventListener("DOMContentLoaded", function() {
+    const signupForm = document.getElementById("signupForm");
+
+    signupForm.addEventListener("submit", function(e){
+        e.preventDefault();
+
+        const firstName = document.getElementById("first_name").value.trim();
+        const lastName = document.getElementById("last_name").value.trim();
+        const email = document.getElementById("new-email").value.trim();
+        const password = document.getElementById("new-password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+
+        // Validations
+        if(!firstName || !lastName || !email || !password || !confirmPassword){
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        if(password !== confirmPassword){
+            alert("Passwords do not match!");
+            return;
+        }
+
+        if(password.length < 6){
+            alert("Password must be at least 6 characters long.");
+            return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!emailPattern.test(email)){
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        // Store data
+        const username = email.split("@")[0];
+        localStorage.setItem("studentName", username);
+        localStorage.setItem("firstName", firstName);
+        localStorage.setItem("lastName", lastName);
+
+        alert("Registration successful! Redirecting...");
+        window.location.href = "sdf.html";
+    });
+});
+
+</script>
+</body>
+</html>

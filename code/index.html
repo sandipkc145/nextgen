@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="icon" href="https://png.pngtree.com/png-vector/20211028/ourmid/pngtree-letter-n-logo-png-image_3990277.png">
+
+  <title>NextGen - E-Learning Platform</title>
+  <style>
+    *{box-sizing: border-box;}
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      background: #f9f9f9;
+      color: #222222;
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+      /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(239, 235, 235, 0);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+      flex-wrap: wrap;
+    }
+
+    nav.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      opacity: 0.95;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4b6cb7;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+      transition: max-height 0.4s ease;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li::before {
+      content: " ";
+      width: 0px;
+      height: 2px;
+      position: absolute;
+      bottom: 0;
+      background-color: blue;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li:hover::before {
+      width: 100%;
+    }
+
+    nav ul li:nth-child(1) {
+      background: linear-gradient(90deg, rgb(7, 18, 236));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .nav-buttons button {
+      margin-left: 1rem;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .join-btn {
+      background: #0f53f3ee;
+      color: #fff;
+    }
+
+    .join-btn:hover {
+      color: #0f53f3ee;
+      background-color: white;
+      border: 2px solid #0f53f3ee;
+    }
+
+    /* Hamburger Button - hidden on desktop */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 1024px) {
+      nav .logo {
+        font-size: 1.3rem;
+      }
+
+      /* Hide login button on tablet/mobile */
+      .nav-buttons {
+        display: none;
+      }
+
+      /* Hamburger shown */
+      .hamburger {
+        display: block;
+      }
+
+      /* Mobile menu styling */
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;  /* collapsed by default */
+        overflow: hidden;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        
+      }
+
+      nav ul.show {
+        max-height: 500px; /* expand to show all items */
+      }
+
+      nav ul li {
+    
+        margin-left: 80%;
+        margin-right: 5px;
+       
+
+        padding: 0.8rem 0;
+        border-top: 1px solid #ddd;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      nav .logo {
+        font-size: 1.1rem;
+      }
+
+      nav ul li {
+        padding: 0.6rem 0;
+      }
+    }
+    
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 5%;
+      gap: 2rem;
+    }
+
+    @media screen and (max-width:740px) {
+      .hero{
+        display: flex;
+        flex-direction: column;
+      }
+      
+    }
+    .hero-text {
+      max-width: 50%;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero-text h4{
+        background:linear-gradient(to right, rgb(213, 50, 50), rgb(216, 105, 64));
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 20px;
+        color: white;
+
+
+    }
+
+    .hero-text h1{
+        margin-top: -20px;
+         font-size: 60px;
+    }
+    .hero-text h1 span{
+        background: linear-gradient(to right, blue,purple);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+
+    }
+    .hero-text h3 span {
+      color: #ff5722;
+      font-size: 30px;
+      
+    }
+    .hero-text h3{
+        margin-top: -15px;
+        font-size: 30px;
+        font-weight: 400;
+
+    }
+    .hero-text p {
+      margin: 1rem 0;
+      color: #555;
+      line-height: 1.6;
+    }
+    .stats {
+      display: flex;
+      gap: 2rem;
+      margin: 1rem 0;
+      font-weight: 525;
+    }
+    .stats div {
+      text-align: center;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    .cta-buttons .start-btn {
+      background: #2196f3;
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .cta-buttons .start-btn:hover{
+      background-color: white;
+      color:#2196f3;
+      border: 2px solid #2196f3;
+    }
+    .cta-buttons .demo-btn {
+      background: transparent;
+      border: 2px solid #ff5722;
+      color: #ff5722;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .cta-buttons .demo-btn:hover{
+      background-color: red;
+      color: white;
+    }
+    .hero-img {
+      flex: 1;
+    }
+    .hero-img img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+
+
+    /* Learning Path Section */
+.learning-path {
+  padding: 4rem 5%;
+  text-align: center;
+}
+
+.learning-path .section-header h2 {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+}
+.learning-path .section-header h2 span {
+  background: linear-gradient(90deg, #ff5722, #673ab7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.learning-path .section-header p {
+  color: #555;
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+.section-header h4 {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: #eef6ff;
+  color: #2196f3;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 650px));
+  gap: 3rem;
+  margin-top: 2rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+@media screen and (max-width: 745px) {
+  .categories{
+    grid-template-columns:1fr;
+     margin-left: 1rem;
+  margin-right: 1rem;
+  }
+
+.categories-card{
+  width: 300px;
+   padding:0;
+}
+  
+}
+.category-card {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 10px;
+}
+
+.category-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.category-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.category-card .meta {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* Unique Hover Vibrations */
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.category-card.blue:hover { box-shadow: 0 8px 25px rgba(33,150,243,0.4); }
+.category-card.orange:hover { box-shadow: 0 8px 25px rgba(255,87,34,0.4); }
+.category-card.purple:hover { box-shadow: 0 8px 25px rgba(156,39,176,0.4); }
+.category-card.pink:hover { box-shadow: 0 8px 25px rgba(233,30,99,0.4); }
+.category-card.teal:hover { box-shadow: 0 8px 25px rgba(0,150,136,0.4); }
+.category-card.yellow:hover { box-shadow: 0 8px 25px rgba(255, 127, 7, 0.4); }
+
+
+
+#crs-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, rgb(238, 107, 6), #ffb347);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+/* Hover effect */
+#crs-button:hover {
+ 
+  transform: scale(1.2);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Active (clicked) state */
+#crs-button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+
+/* Expert of NExt gen */
+
+.experts {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(to bottom right, #fff, #f8f9ff);
+  font-family: "Poppins", sans-serif;
+}
+
+.experts-header {
+  margin-bottom: 5%;
+}
+
+.experts-header h4 {
+  background-color: rgba(180, 37, 180, 0.116);
+  color:purple;
+  border: none;
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: default;
+  margin-bottom: 1rem;
+}
+
+.experts-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.6rem;
+  font-size: 50px;
+}
+
+.experts-header h2 span {
+  background: linear-gradient(90deg, blue,purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 60px;
+}
+
+.experts-header p {
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.experts-cards {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.16) translateY(-15px);
+  
+}
+.expert1:hover{
+   box-shadow: 0 0 10px 5px rgb(99, 150, 202);
+
+}
+.expert2:hover{
+   box-shadow: 0 0 10px 5px rgba(222, 108, 15, 0.402);
+
+}
+.expert3:hover{
+   box-shadow: 0 0 10px 5px rgba(157, 15, 222, 0.402);
+
+}
+
+.card-image {
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-image .rating {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: #fff;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #444;
+}
+
+.card-content {
+  padding: 1rem;
+  text-align: left;
+}
+
+.card-content h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.card-content .role {
+  color: #2196f3;
+  font-weight: 500;
+  margin: 0.2rem 0 0.5rem;
+}
+
+.card-content .desc {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.tags span {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* ✅ Tag colors per expert */
+.expert2 {
+  transform: scale(1.12);
+}
+
+.expert1 .tags span {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.expert2 .tags span {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.expert3 .tags span {
+  background: #f3e5f5;
+  color: #8e24aa;
+}
+
+.stats {
+  width: 30%; 
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: #444;
+}
+
+.meet-btn {
+  margin-top: 4rem;
+}
+
+.meet-btn button {
+  background: linear-gradient(to right, #9c27b0, #00bcd4);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:scale 0.3s ease;
+}
+
+.meet-btn button:hover{
+  transform: translateY(-3px);
+  scale: 1.10;
+}
+
+
+
+
+/* Section feedback */
+.success {
+  padding: 4rem 1.5rem;
+  text-align: center;
+  background: radial-gradient(1200px 600px at 12% 55%, rgba(131, 173, 207, 0.07));
+}
+
+
+/* Header Tag */
+.success .tag {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background-color:  #cd0fb43d;
+  color: #bb0feb;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+/* Heading */
+.success h2 {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin: 0.7rem 0 0.5rem;
+  color: #0f172a;
+}
+
+.success .highlight {
+    font-size: 50px;
+  background: linear-gradient(90deg, #0ea5e9, #7c3aed, #ef4444);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+/* Subtitle */
+.success p {
+  color: #5b606e;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+/* Feedback Cards Grid */
+.feeddback-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Individual Card */
+.feedbackcard, .feedbackCard {
+  background: #fff;
+  border-radius: 20px;
+  
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedbackcard:hover, .feedbackCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px 10px rgb(132, 182, 192);
+}
+
+/* Image */
+.feedbackcard img, .feedbackCard img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0ea5e9;
+  margin-bottom: 1rem;
+}
+
+/* Card Text */
+.feedbackcard p, .feedbackCard p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.feedbackcard h4, .feedbackCard h4 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.feedbackcard span, .feedbackCard span {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+
+
+
+/* foooter section */
+.footer {
+  width: 100%;
+  background: linear-gradient(135deg, #0d1a3a, #1a3b87);
+  color: #fff;
+  position: relative;
+  padding: 3rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+
+/* Top Row: Newsletter + Links + Support + Categories */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+.footer-top > div {
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+
+/* Newsletter */
+.footer-newsletter h3 {
+  margin-bottom: 0.5rem;
+}
+
+.footer-newsletter p {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-newsletter form {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-newsletter input[type="email"] {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.footer-newsletter button {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(90deg,#ff77e1,#7a5cff,#22d3ee);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.footer-newsletter button:hover {
+  opacity: 0.8;
+}
+
+/* Links / Support / Categories */
+.footer-links h3,
+.footer-support h3,
+.footer-categories h3 {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links ul,
+.footer-support ul,
+.footer-categories ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li a,
+.footer-support li a,
+.footer-categories li a {
+  display: block;
+  padding: 0.3rem 0;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links li a:hover,
+.footer-support li a:hover,
+.footer-categories li a:hover {
+  color: #22d3ee;
+}
+
+/* Middle Row: Logo + Motive + Contact */
+.footer-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+  margin: 3rem 0;
+}
+.footer-middle-text{
+  margin-top: -20px;
+}
+
+
+.footer-middle .footer-middle-text h2 span {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(90deg,#ff77e1,#7a5cff,#22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.footer-middle .footer-middle-text p {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+/* Contact Info Row */
+.footer-contact {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.footer-contact a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-contact a:hover {
+  color: #22d3ee;
+}
+
+/* Social Media Icons Row */
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg,#22d3ee,#7a5cff);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-social a:hover {
+  transform: scale(1.2);
+  background: linear-gradient(135deg,#ff77e1,#ffe600);
+}
+
+/* Bottom Row: policy / copyright */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  margin: 0 5%;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  opacity: 0.85;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 1rem;
+  gap: 1rem;
+}
+.footer-bottom >div a{
+  text-decoration: none;
+  color: white;
+}
+.footer-bottom >div a:hover{
+  color: rgb(144, 192, 232);
+}
+
+ @media (max-width: 768px) {
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+
+  <nav>
+    <div class="logo">NextGen</div>
+    <button class="hamburger">&#9776;</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="course.html">Courses</a></li>
+      <li><a href="mentor.html">Mentor</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <button class="join-btn">Log in</button>
+    </div>
+  </nav>
+
+
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-text">
+    <h4>Nepal's #1 E-Learning Platform</h4>
+    <h1><span>Next</span>Gen</h1>
+    <h3>Learning <br> <span>Revolution</span></h3>
+    <p>Unlock your potential with affordable, cutting-edge courses designed for Nepal's future. 
+        Join thousands of learners transforming their careers.</p>
+    <div class="stats">
+    <div><span style="color:#2196f3;">10K+</span><br>Students</div>
+    <div><span style="color:#ff5722;">10+</span><br>Courses</div>
+    <div><span style="color:purple;">95%</span><br>Success Rate</div>
+    </div>
+    <div class="cta-buttons">
+    <button class="start-btn">Start Learning Now</button>
+    <button class="demo-btn">Watch Demo</button>
+    </div>
+</div>
+<div class="hero-img">
+    <img src="../assets/hero.avif" alt="NextGen Learning">
+</div>
+</section>
+
+<!-- Learning Path Section -->
+<section class="learning-path">
+<div class="section-header">
+<h4 class="explore-btn"><i class="ri-compass-3-line"></i> Explore Categories</h4>
+<h2>Choose Your <span>Learning Path</span></h2>
+<p>Discover courses designed by industry experts to help you master in-demand skills and advance your career.</p>
+</div>
+
+<div class="categories">
+<div class="category-card blue">
+    <i class="ri-code-s-slash-line" style="background-color: blue; color: white;"></i>
+    <h3>Programming & Tech</h3>
+    <p>Master coding, web development, and software engineering</p>
+    <div class="meta"><span>3+ Courses</span> • <span>12,456 students</span></div>
+</div>
+
+<div class="category-card orange">
+    <i class="ri-bar-chart-box-line" style="background-color:orange; color: white;"></i>
+    <h3>Business & Marketing</h3>
+    <p>Grow your business with marketing and entrepreneurship skills</p>
+    <div class="meta"><span>2 Courses</span> • <span>8,923 students</span></div>
+</div>
+
+<div class="category-card purple">
+    <i class="ri-brush-line" style="background-color: purple; color: white;"></i>
+    <h3>Design & Creative</h3>
+    <p>Unleash creativity with graphic design and multimedia</p>
+    <div class="meta"><span>2 Courses</span> • <span>6,789 students</span></div>
+</div>
+
+<div class="category-card pink">
+    <i class="ri-brain-line" style="background-color: pink; color: white;"></i>
+    <h3>Data Science & AI</h3>
+    <p>Dive into machine learning and data analytics</p>
+    <div class="meta"><span>3 Courses</span> • <span>5,234 students</span></div>
+</div>
+</div>
+<a href="course.html#view-courses" id="crs-button"> View All Categories </a>
+</section>
+
+<!-- expert section -->
+
+<section class="experts">
+<div class="experts-header">
+<h4><i class="ri-award-line"></i> Meet Our Experts</h4>
+<h2>
+    Learn from <br />
+    <span>Industry Leaders</span>
+</h2>
+<p>
+    Our instructors are practicing professionals who bring real-world
+    experience directly to your learning journey.
+</p>
+</div>
+
+<div class="experts-cards">
+<!-- Expert 1 -->
+<div class="card expert1">
+    <div class="card-image">
+    <img src="../assets/mentor1.avif" alt="Priya Sharma" />
+    <span class="rating">⭐ 4.9</span>
+    </div>
+    <div class="card-content">
+    <h3>Priya Sharma</h3>
+    <p class="role">Full-Stack Developer & Tech Lead</p>
+    <p class="desc">
+        Former tech lead at major startups, passionate about making coding
+        accessible to everyone in Nepal.
+    </p>
+    <div class="tags">
+        <span>React</span>
+        <span>Node.js</span>
+        <span>Python</span>
+    </div>
+    <div class="stats">
+        <p><strong>2500</strong> Students</p>
+        <p><strong>2</strong> Courses</p>
+        <p><strong>4.9</strong> Rating</p>
+    </div>
+    </div>
+</div>
+
+<!-- Expert 2 -->
+<div class="card expert2">
+    <div class="card-image">
+    <img src="../assets/mentor2.avif" alt="Anjali Patel" />
+    <span class="rating">⭐ 4.8</span>
+    </div>
+    <div class="card-content">
+    <h3>Anjali Patel</h3>
+    <p class="role">Digital Marketing Expert</p>
+    <p class="desc">
+        Marketing strategist who has helped 500+ businesses grow their online
+        presence across South Asia.
+    </p>
+    <div class="tags">
+        <span>SEO</span>
+        <span>Social Media</span>
+        <span>Analytics</span>
+    </div>
+    <div class="stats">
+        <p><strong>2000</strong> Students</p>
+        <p><strong>2</strong> Courses</p>
+        <p><strong>4.8</strong> Rating</p>
+    </div>
+    </div>
+</div>
+
+<!-- Expert 3 -->
+<div class="card expert3">
+    <div class="card-image">
+    <img src="../assets/mentor3.avif" alt="Rahul Gupta" />
+    <span class="rating">⭐ 4.9</span>
+    </div>
+    <div class="card-content">
+    <h3>Rahul Gupta</h3>
+    <p class="role">Data Science & AI Specialist</p>
+    <p class="desc">
+        PhD in Computer Science, researcher turned educator, making AI
+        accessible to everyone.
+    </p>
+    <div class="tags">
+        <span>Machine Learning</span>
+        <span>Python</span>
+        <span>TensorFlow</span>
+    </div>
+    <div class="stats">
+        <p><strong>4000</strong> Students</p>
+        <p><strong>3</strong> Courses</p>
+        <p><strong>4.9</strong> Rating</p>
+    </div>
+    </div>
+</div>
+</div>
+
+<div class="meet-btn">
+<button> Meet All Instructors</button>
+</div>
+</section>
+
+<!-- feedback section -->
+
+<section class="success">
+  <span class="tag">❤ Success Stories</span>
+  <h2>Hear from our <br> <span class="highlight">Sucess Stories</span></h2>
+  <p>Real stories from students who transformed their careers with NextGen. Join thousands of successful learners.</p>
+
+  <div class="feeddback-cards">
+    <div class="feedbackcard fd1">
+      <img src="../assets/fb1.jpg" alt="Sita Koirala">
+      <p>"I started learning web development from scratch. The courses helped me land my first developer job within 3 months!"</p>
+      <h4>Sita Koirala</h4>
+      <span>Frontend Developer, Kathmandu</span>
+    </div>
+
+    <div class="feedbackcard fd2">
+      <img src="../assets/fb2.jpg" alt="Maya Shrestha">
+      <p>"The data science track gave me confidence to switch careers. Projects were real-world and mentors supportive."</p>
+      <h4>Maya Shrestha</h4>
+      <span>Data Analyst, Lalitpur</span>
+    </div>
+
+    <div class="feedbackCard fd3">
+      <img src="../assets/fb3.jpg" alt="Rajesh Thapa">
+      <p>"I completed the full-stack course and now work as a software engineer. The mentorship and projects were incredible."</p>
+      <h4>Rajesh Thapa</h4>
+      <span>Software Engineer, Bhaktapur</span>
+    </div>
+
+    <div class="feedbackcard fd4">
+      <img src="../assets/fb4.jpg" alt="Anil Gurung">
+      <p>"The AI and ML track transformed my career. I got hired in a top startup and work on exciting projects."</p>
+      <h4>Anil Gurung</h4>
+      <span>AI Engineer, Pokhara</span>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- footer section -->
+ <footer class="footer">
+
+  <!-- Top Row -->
+  <div class="footer-top">
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+      <h3>Subscribe to our Newsletter</h3>
+      <p>Get updates about new courses and offers.</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="course.html">Courses</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Join Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Support / FAQ -->
+    <div class="footer-support">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="course.html#faq-center">FAQ</a></li>
+        <li><a href="contact.html#help">Help</a></li>
+        <li><a href="about.html#">Our Journey</a></li>
+        <li><a href="about.html#team">Our Team</a></li>
+        
+      </ul>
+    </div>
+
+    <!-- Categories -->
+    <div class="footer-categories">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="programming.html">Programming and Tech</a></li>
+        <li><a href="buisness.html">Business and Marketing</a></li>
+        <li><a href="ui.html">Design and Creativity</a></li>
+        <li><a href="data.html">Data science and AI</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Middle Row -->
+  <div class="footer-middle">
+    <div class="footer-middle-text">
+      <h2><span>Next</span>Gen</h2>
+      <p>NextGen is Nepal’s #1 platform for affordable and future-ready e-learning courses, bridging education and technology for everyone.</p>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-contact">
+      <a href="mailto:info@nextgen.com"><i class="ri-mail-line"></i> info@nextgen.com</a>
+      <a href="https://wa.me/977981234567"><i class="ri-whatsapp-line"></i> +977 981234567</a>
+      <a href="#"><i class="ri-map-pin-line"></i> Kathmandu, Nepal</a>
+    </div>
+
+    <!-- Social Media Icons Row -->
+    <div class="footer-social">
+      <a href="https://www.youtube.com/"><i class="ri-youtube-fill"></i></a>
+      <a href="https://www.facebook.com/"><i class="ri-facebook-fill"></i></a>
+      <a href="https://www.linkedin.com/"><i class="ri-linkedin-fill"></i></a>
+      <a href="https://www.instagram.com/"><i class="ri-instagram-fill"></i></a>
+    </div>
+  </div>
+
+  <!-- Bottom Row -->
+  <div class="footer-bottom">
+    <div>Made in Nepal with 💖</div>
+    <div> <a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a>  | <a href="#">Terms & Conditions</a></div>
+    <div>© 2025 NextGEn. All rights reserved.</div>
+  </div>
+
+</footer>
+<script>
+    // Scroll effect
+    const navbar = document.querySelector("nav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    // Hamburger toggle 
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector("nav ul");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+
+//login
+var logBtn = document.getElementsByClassName("join-btn")[0];
+logBtn.addEventListener("click",()=>{
+  window.location.href="login.html";
+})
+
+
+//start learning page
+var startBtn= document.getElementsByClassName("start-btn")[0]
+startBtn.addEventListener("click",()=>{
+  window.location.href="course.html#category-courses"
+})
+
+
+//this is start button page
+
+var startBtn=document.getElementsByClassName("demo-btn")[0]
+startBtn.addEventListener("click",()=>{
+  window.location.href="demo.html";
+})
+
+//this is for the meet button
+var meetBtn= document.getElementsByClassName("meet-btn")[0]
+meetBtn.addEventListener("click",()=>{
+  window.location.href="mentor.html"
+})
+
+
+
+
+
+</script>
+
+</body>
+</html>

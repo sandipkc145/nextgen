@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get in Touch</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+   <link rel="icon" href="https://png.pngtree.com/png-vector/20211028/ourmid/pngtree-letter-n-logo-png-image_3990277.png">
+  <style>
+    
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      background: #f9f9f9;
+      color: #222222;
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+
+    
+     /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(239, 235, 235, 0);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+      flex-wrap: wrap;
+    }
+
+    nav.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      opacity: 0.95;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4b6cb7;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+      transition: max-height 0.4s ease;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li::before {
+      content: " ";
+      width: 0px;
+      height: 2px;
+      position: absolute;
+      bottom: 0;
+      background-color: blue;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li:hover::before {
+      width: 100%;
+    }
+
+    nav ul li:nth-child(5) {
+      background: linear-gradient(90deg, rgb(18, 141, 61));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .nav-buttons button {
+      margin-left: 1rem;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .join-btn {
+      background: #0f53f3ee;
+      color: #fff;
+    }
+
+    .join-btn:hover {
+      color: #0f53f3ee;
+      background-color: white;
+      border: 2px solid #0f53f3ee;
+    }
+
+    /* Hamburger Button - hidden on desktop */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 1024px) {
+      nav .logo {
+        font-size: 1.3rem;
+      }
+
+      /* Hide login button on tablet/mobile */
+      .nav-buttons {
+        display: none;
+      }
+
+      /* Hamburger shown */
+      .hamburger {
+        display: block;
+      }
+
+      /* Mobile menu styling */
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;  /* collapsed by default */
+        overflow: hidden;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        
+      }
+
+      nav ul.show {
+        max-height: 500px; /* expand to show all items */
+      }
+
+      nav ul li {
+    
+        margin-left: 80%;
+        margin-right: 5px;
+       
+
+        padding: 0.8rem 0;
+        border-top: 1px solid #ddd;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      nav .logo {
+        font-size: 1.1rem;
+      }
+
+      nav ul li {
+        padding: 0.6rem 0;
+      }
+    }
+    /* --- Contact Section --- */
+    .contact-section {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .contact-section .icon {
+      background: #1dbf73;
+      color: #fff;
+      font-size: 32px;
+      padding: 15px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .contact-section h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .contact-section p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .highlight-box {
+      background: #e9f9f0;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+    }
+
+    .highlight-box i {
+      color: #1dbf73;
+      font-size: 20px;
+      margin-right: 6px;
+    }
+
+    .highlight-box strong {
+      color: #1dbf73;
+      font-size: 18px;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .contact-info i {
+      color: #1dbf73;
+      font-size: 18px;
+    }
+
+    .contact-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .contact-section .subtitle {
+      font-size: 15px;
+      color: #666;
+    }
+
+    /* --- Cards Section --- */
+    .cards-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .info-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .info-card .icon {
+      font-size: 1.8rem;
+      margin-bottom: .8rem;
+      display: inline-block;
+      color: #1dbf73;
+    }
+
+    .info-card h3 {
+      margin: 0 0 .5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .info-card p {
+      margin: 0.3rem 0;
+      font-size: .95rem;
+      color: #555;
+    }
+
+    .highlight {
+      color: #1dbf73;
+      font-weight: 600;
+    }
+
+    .emergency {
+      grid-column: 1 / -1;
+      text-align: center;
+      background: #fff6f6;
+      border: 1px solid #ffb3b3;
+    }
+
+    @media  (max-width:540px) {
+      .emergency {
+        display: grid !important;
+        
+        height: 200px;
+       
+      }
+      
+    }
+
+    .emergency h3 {
+      color: #cc0000;
+    }
+
+    /* contact form  */
+
+    .contact-form-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f9fbfc;
+  }
+
+  .contact-form-section h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .contact-form-section p {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  .form-container {
+    background: #fff;
+    max-width: 700px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: left;
+  }
+
+  .form-container h3 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border 0.3s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: #1dbf73;
+    outline: none;
+  }
+
+  .btn {
+    background: #1dbf73;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    transition: background 0.3s;
+    width: 100%;
+  }
+
+  .btn:hover {
+    background: #17a765;
+  }
+
+  .policy-text {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #666;
+  }
+
+/* Visit and Address Section */
+.office-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f9fbfc;
+}
+
+.office-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.office-section p {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 40px;
+}
+
+.office-container {
+  display: flex;
+  gap: 30px;
+  max-width: 1100px;
+  margin: auto;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.office-image {
+  flex: 1;
+  position: relative;
+}
+
+.office-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.status-tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #1dbf73;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.office-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #fff;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card i {
+  font-size: 22px;
+  color: #1dbf73;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+
+.card p {
+  margin: 3px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.card a {
+  color: #1a73e8;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+.card a:hover {
+  text-decoration: underline;
+}
+
+.closed {
+  color: red;
+  font-weight: 600;
+}
+
+.amenities h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.amenity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.amenity {
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.amenity i {
+  color: #1dbf73;
+  font-size: 18px;
+}
+
+.visit-box {
+  background: #eef6ff;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: left;
+}
+
+.visit-box h4 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.visit-box p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #444;
+}
+
+.visit-box a {
+  color: #1a73e8;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.visit-box a:hover {
+  text-decoration: underline;
+}
+
+   /* Footer section */
+    .footer {
+      width: 100%;
+      background: linear-gradient(135deg, #0d1a3a, #1a3b87);
+      color: #fff;
+      position: relative;
+      
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+
+    /* Top Row: Newsletter + Links + Support + Categories */
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+
+    .footer-top > div {
+      flex: 1 1 220px;
+      min-width: 200px;
+    }
+
+    /* Newsletter */
+    .footer-newsletter h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-newsletter p {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-newsletter form {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-newsletter input[type="email"] {
+      flex: 1;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .footer-newsletter button {
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(90deg,#ff77e1,#7a5cff,#22d3ee);
+      color: #fff;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .footer-newsletter button:hover {
+      opacity: 0.8;
+    }
+
+    /* Links / Support / Categories */
+    .footer-links h3,
+    .footer-support h3,
+    .footer-categories h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links ul,
+    .footer-support ul,
+    .footer-categories ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li a,
+    .footer-support li a,
+    .footer-categories li a {
+      display: block;
+      padding: 0.3rem 0;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links li a:hover,
+    .footer-support li a:hover,
+    .footer-categories li a:hover {
+      color: #22d3ee;
+    }
+
+    /* Middle Row: Logo + Motive + Contact */
+    .footer-middle {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+      margin: 3rem 0;
+    }
+    
+    .footer-middle-text{
+      margin-top: -20px;
+    }
+
+    .footer-middle .footer-middle-text h2 span {
+      font-size: 2rem;
+      font-weight: bold;
+      background: linear-gradient(90deg,#ff77e1,#7a5cff,#22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-middle .footer-middle-text p {
+      font-size: 1rem;
+      line-height: 1.5;
+      max-width: 600px;
+    }
+
+    /* Contact Info Row */
+    .footer-contact {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .footer-contact a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-contact a:hover {
+      color: #22d3ee;
+    }
+
+    /* Social Media Icons Row */
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg,#22d3ee,#7a5cff);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .footer-social a:hover {
+      transform: scale(1.2);
+      background: linear-gradient(135deg,#ff77e1,#ffe600);
+    }
+
+    /* Bottom Row: policy / copyright */
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      margin: 0 5%;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      opacity: 0.85;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 1rem;
+      gap: 1rem;
+    }
+
+  .footer-bottom >div a{
+  text-decoration: none;
+  color: white;
+}
+.footer-bottom >div a:hover{
+  color: rgb(144, 192, 232);
+}
+
+    @media (max-width: 768px) {
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+    <!-- Navigation -->
+  <nav>
+    <div class="logo">NextGen</div>
+    <button class="hamburger">&#9776;</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="course.html">Courses</a></li>
+      <li><a href="mentor.html">Mentor</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <button class="join-btn">Log in</button>
+    </div>
+  </nav>
+
+  
+
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="icon">
+      <i class="ri-message-3-line"></i>
+    </div>
+    <h1>Get in Touch</h1>
+    <p>Have questions about our courses? Need support? We're here to help you on your<br>
+       learning journey with NextGen.</p>
+
+    <div class="highlight-box">
+      <p><i class="ri-double-quotes-l"></i> <strong>"We're Always Here to Help"</strong></p>
+      <p>From enrollment questions to technical support, our dedicated team is committed 
+         to providing you with the best learning experience possible.</p>
+    </div>
+
+    <div id="help" class="contact-info">
+      <div><i class="ri-phone-line"></i> +977-1-5555000</div>
+      <div><i class="ri-mail-line"></i> support@nextgen.edu.np</div>
+      <div><i class="ri-map-pin-line"></i> Kathmandu, Nepal</div>
+    </div>
+
+    <h2 >How Can We Help You?</h2>
+    <p class="subtitle">Choose the best way to reach us based on your needs</p>
+  </section>
+
+  <!-- Cards Section -->
+  <section class="cards-section" >
+    <div class="info-card">
+      <i class="ri-mail-line icon"></i>
+      <h3>Email Support</h3>
+      <p>Get detailed help via email</p>
+      <p class="highlight">support@nextgen.edu.np</p>
+      <p>Response within 24 hours</p>
+    </div>
+
+    <div class="info-card">
+      <i class="ri-phone-line icon"></i>
+      <h3>Phone Support</h3>
+      <p>Speak directly with our team</p>
+      <p class="highlight">+977-1-5555000</p>
+      <p>Available Mon–Fri, 9 AM – 6 PM</p>
+    </div>
+
+    <div class="info-card">
+      <i class="ri-message-3-line icon"></i>
+      <h3>Live Chat</h3>
+      <p>Instant help when you need it</p>
+      <p class="highlight">Chat widget on our platform</p>
+      <p>Available during business hours</p>
+    </div>
+
+    <div class="info-card">
+      <i class="ri-team-line icon"></i>
+      <h3>Student Community</h3>
+      <p>Connect with fellow learners</p>
+      <p class="highlight">community.nextgen.edu.np</p>
+      <p>24/7 peer support</p>
+    </div>
+
+    <div class="info-card">
+      <i class="ri-time-line icon"></i>
+      <h3>Office Hours</h3>
+      <p>Visit us in person</p>
+      <p class="highlight">Mon – Fri: 9 AM – 6 PM</p>
+      <p>Saturday: 10 AM – 4 PM</p>
+    </div>
+
+    <div class="info-card">
+      <i class="ri-map-pin-line icon"></i>
+      <h3>Office Location</h3>
+      <p>Find us in Kathmandu</p>
+      <p class="highlight">Thamel, Kathmandu, Nepal</p>
+      <p>Parking available</p>
+    </div>
+
+    <div class="card emergency">
+      <i class="ri-alert-line icon"></i>
+      <h3>Emergency Support</h3>
+      <p>For urgent technical issues affecting your learning</p>
+      <p class="highlight">+977-1-5555001</p>
+      <p>Available 24/7 for enrolled students</p>
+    </div>
+  </section>
+
+  <!-- this is contact form -->
+   <section class="contact-form-section">
+  <h2>Send Us a Message</h2>
+  <p>Fill out the form below and we'll get back to you as soon as possible</p>
+
+  <div class="form-container">
+    <h3>Contact Form</h3>
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" placeholder="Enter your first name" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" placeholder="Enter your last name" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" placeholder="your.email@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" placeholder="+977-XXX-XXXXXXX">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inquiry">Type of Inquiry *</label>
+        <select id="inquiry" required>
+          <option value="">Select the type of inquiry</option>
+          <option value="admission">Admission</option>
+          <option value="technical">Technical Support</option>
+          <option value="general">General</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject *</label>
+        <input type="text" id="subject" placeholder="Brief description of your inquiry" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message" rows="4" placeholder="Please provide detailed information about your inquiry..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn">
+        <i class="ri-send-plane-line"></i> Send Message
+      </button>
+
+      <p class="policy-text">By submitting this form, you agree to our Privacy Policy and Terms of Service.</p>
+    </form>
+  </div>
+</section>
+
+
+<!-- this is address and map section -->
+ <section class="office-section">
+  <h2>Visit Our Office</h2>
+  <p>We'd love to meet you in person at our Kathmandu headquarters</p>
+
+  <div class="office-container">
+    <!-- Left side: image -->
+    <div class="office-image">
+      <img src="../assets/visit.avif" alt="Office Image">
+      <span class="status-tag">🟢 visit us</span>
+    </div>
+
+    <!-- Right side: info -->
+    <div class="office-info">
+      <!-- Address Card -->
+      <div class="card">
+        <i class="ri-map-pin-line"></i>
+        <div>
+          <h3>NextGen Education Center</h3>
+          <p>Thamel Marg, Ward 26<br>Kathmandu 44600, Nepal</p>
+          <a href="#">Get Directions →</a>
+        </div>
+      </div>
+
+      <!-- Office Hours -->
+      <div class="card">
+        <i class="ri-time-line"></i>
+        <div>
+          <h3>Office Hours</h3>
+          <p>Monday - Friday: <strong>9:00 AM - 6:00 PM</strong></p>
+          <p>Saturday: <strong>10:00 AM - 4:00 PM</strong></p>
+          <p>Sunday: <span class="closed">Closed</span></p>
+        </div>
+      </div>
+
+      <!-- Amenities -->
+      <div class="amenities">
+        <h4>Office Amenities</h4>
+        <div class="amenity-grid">
+          <div class="amenity"><i class="ri-parking-box-line"></i> Free Parking</div>
+          <div class="amenity"><i class="ri-wifi-line"></i> High-Speed WiFi</div>
+          <div class="amenity"><i class="ri-cup-line"></i> Refreshments</div>
+          <div class="amenity"><i class="ri-group-line"></i> Meeting Rooms</div>
+        </div>
+      </div>
+
+      <!-- Planning a visit -->
+      <div class="visit-box">
+        <h4>Planning a Visit?</h4>
+        <p>We recommend scheduling an appointment to ensure someone is available to assist you.</p>
+        <a href="#">Schedule a Visit →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer section -->
+ <footer class="footer">
+
+  <!-- Top Row -->
+  <div class="footer-top">
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+      <h3>Subscribe to our Newsletter</h3>
+      <p>Get updates about new courses and offers.</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="course.html">Courses</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Support / FAQ -->
+    <div class="footer-support">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="course.html#faq-center">FAQ</a></li>
+        <li><a href="contact.html#help">Help</a></li>
+        <li><a href="about.html#">Our Journey</a></li>
+        <li><a href="about.html#team">Our Team</a></li>
+      </ul>
+    </div>
+
+    <!-- Categories -->
+    <div class="footer-categories">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="programming.html">Programming and Tech</a></li>
+        <li><a href="buisness.html">Business and Marketing</a></li>
+        <li><a href="ui.html">Design and Creativity</a></li>
+        <li><a href="data.html">Data science and AI</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Middle Row -->
+  <div class="footer-middle">
+    <div class="footer-middle-text">
+      <h2><span>Next</span>Gen</h2>
+      <p>NextGen is Nepal’s #1 platform for affordable and future-ready e-learning courses, bridging education and technology for everyone.</p>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-contact">
+      <a href="mailto:info@nextgen.com"><i class="ri-mail-line"></i> info@nextgen.com</a>
+      <a href="https://wa.me/977981234567"><i class="ri-whatsapp-line"></i> +977 981234567</a>
+      <a href="#"><i class="ri-map-pin-line"></i> Kathmandu, Nepal</a>
+    </div>
+
+    <!-- Social Media Icons Row -->
+    <div class="footer-social">
+      <a href="https://www.youtube.com/"><i class="ri-youtube-fill"></i></a>
+      <a href="https://www.facebook.com/"><i class="ri-facebook-fill"></i></a>
+      <a href="https://www.linkedin.com/"><i class="ri-linkedin-fill"></i></a>
+      <a href="https://www.instagram.com/"><i class="ri-instagram-fill"></i></a>
+    </div>
+  </div>
+
+  <!-- Bottom Row -->
+  <div class="footer-bottom">
+    <div>Made in Nepal with 💖</div>
+    <div> <a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a>  | <a href="#">Terms & Conditions</a></div>
+    <div>© 2025 SKC. All rights reserved.</div>
+  </div>
+
+</footer>
+
+  <script>
+       // Scroll effect
+    const navbar = document.querySelector("nav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    // Hamburger toggle with slide down effect
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector("nav ul");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+
+    // log in
+var logBtn = document.getElementsByClassName("join-btn")[0]; 
+logBtn.addEventListener("click",()=>{
+  window.location.href="login.html";
+})
+
+//contact form
+
+  // Select the form
+  const contactForm = document.querySelector('.form-container form');
+  // Add submit event listener
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); 
+  
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    alert(`Message sent successfully!\n\nDear ${firstName} ${lastName}, we will contact you very soon.`);
+    contactForm.reset();
+  });
+
+
+
+  </script>
+
+</body>
+</html>

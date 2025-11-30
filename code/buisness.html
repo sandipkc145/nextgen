@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Development Courses</title>
+ 
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+   <link rel="icon" href="https://png.pngtree.com/png-vector/20211028/ourmid/pngtree-letter-n-logo-png-image_3990277.png">
+
+<style>
+    body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom, #fffaf6, #fffefc);
+  color: #222;
+}
+
+  /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(239, 235, 235, 0);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+      flex-wrap: wrap;
+    }
+
+    nav.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      opacity: 0.95;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4b6cb7;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+      transition: max-height 0.4s ease;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li::before {
+      content: " ";
+      width: 0px;
+      height: 2px;
+      position: absolute;
+      bottom: 0;
+      background-color: blue;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li:hover::before {
+      width: 100%;
+    }
+
+    nav ul li:nth-child(2) {
+      background: linear-gradient(90deg, red);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .nav-buttons button {
+      margin-left: 1rem;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .join-btn {
+      background: #0f53f3ee;
+      color: #fff;
+    }
+
+    .join-btn:hover {
+      color: #0f53f3ee;
+      background-color: white;
+      border: 2px solid #0f53f3ee;
+    }
+
+    /* Hamburger Button - hidden on desktop */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 1024px) {
+      nav .logo {
+        font-size: 1.3rem;
+      }
+
+      /* Hide login button on tablet/mobile */
+      .nav-buttons {
+        display: none;
+      }
+
+      /* Hamburger shown */
+      .hamburger {
+        display: block;
+      }
+
+      /* Mobile menu styling */
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;  /* collapsed by default */
+        overflow: hidden;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        
+      }
+
+      nav ul.show {
+        max-height: 500px; /* expand to show all items */
+      }
+
+      nav ul li {
+    
+        margin-left: 80%;
+        margin-right: 5px;
+       
+
+        padding: 0.8rem 0;
+        border-top: 1px solid #ddd;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      nav .logo {
+        font-size: 1.1rem;
+      }
+
+      nav ul li {
+        padding: 0.6rem 0;
+      }
+    }
+
+.back-link a {
+  text-decoration: none;
+  color: #e74c3c;
+  margin-left: 5px;
+}
+
+/* Section header */
+.courses-section {
+  text-align: center;
+  padding: 40px;
+}
+.section-header .icon {
+  font-size: 40px;
+  color: #ff6600;
+}
+.section-header h2 {
+  font-size: 28px;
+  margin: 10px 0;
+}
+.section-header p {
+  color: #555;
+  max-width: 650px;
+  margin: 0 auto;
+}
+.stats {
+  margin-top: 10px;
+}
+.badge {
+  background: #ffefe2;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin: 0 5px;
+  font-size: 12px;
+}
+.badge.green { background: #e8f9e6; color: #2ecc71; }
+.badge.blue { background: #e6f0ff; color: #3498db; }
+
+/* Courses container */
+.courses-container {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 30px;
+}
+.course-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 320px;
+  text-align: left;
+}
+.course-img {
+  position: relative;
+}
+.course-img img {
+  width: 100%;
+  height: auto;
+}
+.labels {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.label {
+  display: inline-block;
+  background: #eee;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-right: 5px;
+}
+.label.orange { background: #ffb347; color: #fff; }
+.label.blue { background: #87ceeb; color: #fff; }
+.label.green { background: #2ecc71; color: #fff; }
+.label.yellow { background: #f1c40f; color: #fff; }
+
+.course-content {
+  padding: 15px;
+}
+.course-content h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.instructor {
+  font-size: 13px;
+  color: #777;
+}
+.info {
+  display: flex;
+  gap: 12px;
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: #444;
+}
+.info i {
+  color: #f39c12;
+}
+.price {
+  font-weight: bold;
+  margin: 10px 0;
+}
+.price .discount {
+  color: #27ae60;
+  font-size: 13px;
+  margin-left: 8px;
+}
+.enroll-btn {
+  display: inline-block;
+  background: #ff6600;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+.enroll-btn:hover {
+  background: #e65c00;
+}
+
+/* Path section */
+.path-section {
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff7ec;
+  border-radius: 12px;
+  max-width: 850px;
+  text-align: center;
+}
+.path-section h3 {
+  margin-bottom: 10px;
+}
+.path-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+.path-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 40%;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+.circle {
+  display: inline-block;
+  background: #ff6600;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+}
+.tags {
+  margin-top: 10px;
+}
+.tags span {
+  background: #eee;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin: 0 3px;
+}
+
+/* footer section */
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background: #0c2252;
+      color: #f9fafb;
+      text-align: center;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    footer ul li a {
+      text-decoration: none;
+      color: #f9fafb;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    footer ul li a:hover {
+      color: #a855f7;
+    }
+
+</style>
+</head>
+<body>
+   <!-- Navigation -->
+  <nav>
+    <div class="logo">NextGen</div>
+    <button class="hamburger">&#9776;</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="course.html">Courses</a></li>
+      <li><a href="mentor.html">Mentor</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <button class="join-btn">Log in</button>
+    </div>
+  </nav>
+>
+
+
+
+
+  <!-- Section Start -->
+  <section class="courses-section">
+    <div class="section-header">
+      <i class="ri-bar-chart-box-line icon"></i>
+      <h2>Marketing & Business Courses</h2>
+      <p>Master business growth strategies and modern marketing skills. 
+         Learn how to scale startups, build strong brands, and run data-driven campaigns.</p>
+      <div class="stats">
+        <span class="badge">2 Courses Available</span>
+        <span class="badge green">2000+ Learners</span>
+        <span class="badge blue">Industry Experts</span>
+      </div>
+    </div>
+
+    <!-- Course Cards -->
+    <div class="courses-container">
+      <!-- Digital Marketing -->
+      <div class="course-card">
+        <div class="course-img">
+          <img src="../assets/m2.jpg" alt="Digital Marketing Course">
+          <div class="labels">
+            <span class="label orange">Bestseller</span>
+            <span class="label blue">Intermediate</span>
+            <span class="label green">Lifetime</span>
+          </div>
+        </div>
+        <div class="course-content">
+          <h3>Digital Marketing: SEO, Social Media & Ads</h3>
+          <p>Grow businesses online with advanced digital marketing. Master SEO, content marketing, social media ads, and analytics.</p>
+          <p class="instructor">by Bikesh Adhikari</p>
+          <ul class="info">
+            <li><i class="ri-star-fill"></i> 4.6</li>
+            <li><i class="ri-time-line"></i> 38 hours</li>
+            <li><i class="ri-slideshow-line"></i> 40+ lectures</li>
+          </ul>
+          <p class="price">NPR 11,999 <span class="discount">Save 35%</span></p>
+          <a href="#" class="enroll-btn">Enroll Now <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+
+      <!-- Business Strategy -->
+      <div class="course-card">
+        <div class="course-img">
+          <img src="../assets/m1.jpeg" alt="Business Strategy Course">
+          <div class="labels">
+            <span class="label yellow">Intermediate</span>
+            <span class="label green">Lifetime</span>
+          </div>
+        </div>
+        <div class="course-content">
+          <h3>Business Strategy & Entrepreneurship</h3>
+          <p>Learn how to start, manage, and scale successful businesses. Build strategies, leadership skills, and financial planning.</p>
+          <p class="instructor">by Bikesh Adhikari</p>
+          <ul class="info">
+            <li><i class="ri-star-fill"></i> 4.7</li>
+            <li><i class="ri-time-line"></i> 36 hours</li>
+            <li><i class="ri-slideshow-line"></i> 42+ lectures</li>
+          </ul>
+          <p class="price">NPR 12,999 <span class="discount">Save 32%</span></p>
+          <a href="#" class="enroll-btn">Enroll Now <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Path Section -->
+  <section class="path-section">
+    <h3>Your Marketing & Business Journey</h3>
+    <p>Choose your learning path. Master digital marketing to promote businesses globally 
+       or business strategy to build and scale your own company. Both courses prepare you for real-world success.</p>
+    <div class="path-container">
+      <div class="path-card">
+        <span class="circle">DM</span>
+        <h4>Digital Marketing Path</h4>
+        <p>Perfect for aspiring marketers. Learn SEO, social media campaigns, and Google Ads.</p>
+        <div class="tags">
+          <span>SEO</span><span>Social Media</span><span>Google Ads</span>
+        </div>
+      </div>
+      <div class="path-card">
+        <span class="circle">BS</span>
+        <h4>Business Strategy Path</h4>
+        <p>Ideal for entrepreneurs. Master startup planning, finance, and leadership skills.</p>
+        <div class="tags">
+          <span>Entrepreneurship</span><span>Leadership</span><span>Finance</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <footer>
+    <p>© 2025 NextGen Nepal</p>
+    <ul>
+      <li><a href="index.html"> Home</a></li>
+      <li><a href="course.html"> Courses</a></li>
+      <li><a href="mentor"> Mentors</a></li>
+      <li><a href="about.html"></a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </footer>
+  
+<script>
+     // Scroll effect
+    const navbar = document.querySelector("nav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    // Hamburger toggle with slide down effect
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector("nav ul");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+
+  //login
+var logBtn = document.getElementsByClassName("join-btn")[0]; 
+logBtn.addEventListener("click",()=>{
+  window.location.href="login.html";
+})
+
+
+
+
+
+</script>
+
+<script>
+  // Select all enroll buttons
+  const enrollButtons = document.querySelectorAll('.enroll-btn');
+
+  enrollButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default link behavior
+
+      // Ask for Name
+      const name = prompt("Please enter your full name:");
+      if (!name) return alert("Name is required!");
+
+      // Ask for Phone Number
+      const phone = prompt("Please enter your phone number:");
+      if (!phone) return alert("Phone number is required!");
+
+      // Show confirmation message
+      alert(`Thank you, ${name}!\nWe will contact you very soon. Please await our call.`);
+
+      // Change button text to 'Enroll Waiting' and disable it
+      this.textContent = "Enroll Waiting";
+      this.disabled = true;
+      this.style.cursor = "not-allowed";
+    });
+  });
+</script>
+
+</body>
+</html>

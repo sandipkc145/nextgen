@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentors</title>
+    <!-- CDN Link for Icons -->
+     <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"rel="stylesheet"/>
+     <link rel="icon" href="https://png.pngtree.com/png-vector/20211028/ourmid/pngtree-letter-n-logo-png-image_3990277.png">
+
+     <style> 
+      body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      background: #f9f9f9;
+      color: #222222;
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+  /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(239, 235, 235, 0);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+      flex-wrap: wrap;
+    }
+
+    nav.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      opacity: 0.95;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4b6cb7;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+      transition: max-height 0.4s ease;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li::before {
+      content: " ";
+      width: 0px;
+      height: 2px;
+      position: absolute;
+      bottom: 0;
+      background-color: blue;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li:hover::before {
+      width: 100%;
+    }
+
+    nav ul li:nth-child(3) {
+      background: linear-gradient(90deg, rgb(227, 12, 231));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .nav-buttons button {
+      margin-left: 1rem;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .join-btn {
+      background: #0f53f3ee;
+      color: #fff;
+    }
+
+    .join-btn:hover {
+      color: #0f53f3ee;
+      background-color: white;
+      border: 2px solid #0f53f3ee;
+    }
+
+    /* Hamburger Button - hidden on desktop */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 1024px) {
+      nav .logo {
+        font-size: 1.3rem;
+      }
+
+      /* Hide login button on tablet/mobile */
+      .nav-buttons {
+        display: none;
+      }
+
+      /* Hamburger shown */
+      .hamburger {
+        display: block;
+      }
+
+      /* Mobile menu styling */
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;  /* collapsed by default */
+        overflow: hidden;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        
+      }
+
+      nav ul.show {
+        max-height: 500px; /* expand to show all items */
+      }
+
+      nav ul li {
+    
+        margin-left: 80%;
+        margin-right: 5px;
+       
+
+        padding: 0.8rem 0;
+        border-top: 1px solid #ddd;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      nav .logo {
+        font-size: 1.1rem;
+      }
+
+      nav ul li {
+        padding: 0.6rem 0;
+      }
+    }
+
+.section_title{   
+            width: 60%;
+            margin: 5px auto;
+            padding: 60px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(221, 215, 215, 0.08);
+            text-align: center;
+}
+.section_title i{
+    font-size: 3rem;
+    color: #3838ba;
+    padding: 20px;
+}
+.section_title h2{
+    font-size: 2.8rem;
+     margin-bottom: 20px;
+     color: rgb(38, 37, 37);
+}
+.section_title p{
+    font-size: 1.40rem;
+    color: rgb(40, 39, 39);
+}
+/* Sologan Part */
+.sologan{
+  max-height: 300px;
+  min-width: 300px; 
+  padding: 70px 40px;
+  background: linear-gradient(rgb(249, 213, 255),rgb(255, 229, 251));
+  border-radius: 50px;
+  border: 2px solid pink;
+
+  margin: 5px 20px;
+}
+.sologan i{
+    color: rgb(152, 5, 152);
+    font-size:30px;
+    position: relative;
+    bottom: 35px;
+    left: 260px;
+}
+.sologan p:first-of-type{
+    font-size: 1.5rem;
+    font-style:bold;
+    text-align: center;
+    position: relative;
+    bottom: 70px;   
+    font-weight: bold;
+    padding-left: 30px;
+}
+.sologan p.description{
+    font-size: 1.2rem;
+    position: relative;
+    bottom: 60px;
+    text-align: center;
+} 
+
+
+
+
+/* CSS for Stats Container */
+.stats_container{
+  display: flex;
+  justify-content:center;
+  min-height: 100px;
+  min-width: 300px;
+  margin: 30px auto;
+}
+
+@media (max-width:745px) {
+ .stats_container{
+  display: none;
+  
+ } 
+}
+.experts i{
+    font-size: 40px;
+    color: rgb(196, 37, 196);
+    
+    border-radius: 5px;
+}
+.experts p{
+    font-weight: bold;
+    margin-left: 20px;
+}
+.experts span{
+    font-weight: 400;
+     color: rgb(38, 37, 37);
+     position: relative;
+     top: 20px;
+     right: 60px;
+     padding-top: 10px;
+}
+.rating i{
+    font-size: 40px;
+    color: rgb(196, 37, 196);
+ 
+    border-radius: 5px;
+    margin-left: 30px;
+}
+.rating p{
+    font-weight: bold;
+    margin-left: 40px;
+}
+.rating span{
+    font-weight: 400;
+     color: rgb(38, 37, 37);
+     position: relative;
+     top: 20px;
+     right: 60px;
+     padding-top: 10px;
+}
+.session{
+    margin-left: 40px;
+}
+.session i{
+    font-size: 40px;
+    color: rgb(196, 37, 196);
+    
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.session p{
+    font-weight: bold;
+    margin-left: 11px;
+}
+.session span{
+    font-weight: 400;
+     color: rgb(38, 37, 37);
+     position: relative;
+     top: 20px;
+     right: 85px;
+     padding-top: 10px;
+}
+.time{
+    margin-right: 20px;
+}
+.time i{
+    font-size: 40px;
+    color: rgb(196, 37, 196);
+  
+    border-radius: 5px;
+    margin-right: 100px;
+}
+.time p{
+    font-weight: bold;
+    margin-left: 20px;
+}
+.time span{
+    font-weight: 400;
+     color: rgb(38, 37, 37);
+     position: relative;
+     top: 20px;
+     right: 50px;
+     padding-top: 10px;
+}
+
+/* CSS for Service COntainer */
+.section {
+    padding: 60px 20px;
+  }
+
+  .section h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    /* margin-left: 600px; */
+  }
+
+  .section p.subtitle {
+    color: #2a2929;
+    margin-bottom: 40px;
+    font-size: 1em;
+    text-align: center;
+   
+  }
+  @media (max-width:1200px) {
+     .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+  }
+
+
+    
+  }
+
+
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px 20px;
+    width:150px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  }
+
+  .card .icon {
+    font-size: 36px;
+    color: #8b5cf6;
+    background: #f3e8ff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+
+  .card h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 15px;
+  }
+
+  .card .time {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    top: 20px;
+    left: 30px;
+    font-size: 0.85em;
+    color: #888;
+  }
+  .cards .card:nth-child(2) .time {
+  position: relative;
+  top: 40px;
+}
+ .cards .card:nth-child(3) .time {
+  position: relative;
+  top: 40px;
+}
+ .cards .card:nth-child(4) .time {
+  position: relative;
+  top: 40px;
+}
+  .card .time i {
+    margin-right: 5px;
+  }
+
+  /* CSS of Mentors Booking Session */
+.descrip h2{
+  text-align: center;
+  margin-top: 40px;
+}
+.descrip p{
+  text-align: center;
+}
+    .mentors {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fff;
+      width: 300px;
+      border-radius: 10px;
+      padding: 40px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #7e57c2;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .card .title {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 6px;
+    }
+
+    .location {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .desc {
+      font-size: 20px;
+      margin-bottom: 12px;
+      text-align:initial;
+      color: #444;
+      /* width: auto; */
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      background: #eee;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .info {
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: #333;
+    }
+
+    .stars {
+      color: #f7b500;
+    }
+
+    .price {
+      margin: 12px 0;
+      font-weight: bold;
+    }
+
+    .book-btn {
+      color: #fff;
+      background: linear-gradient(90deg,rgba(56, 98, 181, 1) 10%, rgba(107, 63, 150, 1) 65%);
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .book-btn:hover {
+      background: #670cd5;
+    }
+
+
+
+/* foooter section */
+.footer {
+  width: 100%;
+  background: linear-gradient(135deg, #0d1a3a, #1a3b87);
+  color: #fff;
+  position: relative;
+  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+
+/* Top Row: Newsletter + Links + Support + Categories */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+.footer-top > div {
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+
+/* Newsletter */
+.footer-newsletter h3 {
+  margin-bottom: 0.5rem;
+}
+
+.footer-newsletter p {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-newsletter form {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-newsletter input[type="email"] {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.footer-newsletter button {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(90deg,#ff77e1,#7a5cff,#22d3ee);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.footer-newsletter button:hover {
+  opacity: 0.8;
+}
+
+/* Links / Support / Categories */
+.footer-links h3,
+.footer-support h3,
+.footer-categories h3 {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links ul,
+.footer-support ul,
+.footer-categories ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li a,
+.footer-support li a,
+.footer-categories li a {
+  display: block;
+  padding: 0.3rem 0;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links li a:hover,
+.footer-support li a:hover,
+.footer-categories li a:hover {
+  color: #22d3ee;
+}
+
+/* Middle Row: Logo + Motive + Contact */
+.footer-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+  margin: 3rem 0;
+}
+.footer-middle-text{
+  margin-top: -20px;
+}
+
+
+.footer-middle .footer-middle-text h2 span {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(90deg,#ff77e1,#7a5cff,#22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.footer-middle .footer-middle-text p {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+/* Contact Info Row */
+.footer-contact {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.footer-contact a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-contact a:hover {
+  color: #22d3ee;
+}
+
+/* Social Media Icons Row */
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg,#22d3ee,#7a5cff);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-social a:hover {
+  transform: scale(1.2);
+  background: linear-gradient(135deg,#ff77e1,#ffe600);
+}
+
+/* Bottom Row: policy / copyright */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  margin: 0 5%;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  opacity: 0.85;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 1rem;
+  gap: 1rem;
+}
+.footer-bottom >div a{
+  text-decoration: none;
+  color: white;
+}
+.footer-bottom >div a:hover{
+  color: rgb(144, 192, 232);
+}
+
+ @media (max-width: 768px) {
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+  
+
+     </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">NextGen</div>
+    <button class="hamburger">&#9776;</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="course.html">Courses</a></li>
+      <li><a href="mentor.html">Mentor</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <button class="join-btn">Log in</button>
+    </div>
+  </nav>
+
+    <div class="section_title">
+        <i class="ri-account-pin-box-fill"></i>
+        <h2>Meet Our Expert Mentors</h2>
+        <p>Get personalized 1-on-1 guidance from Nepali professionals working at the world's top tech companies.</p>
+    </div>
+    <div class="sologan">
+        <i class="ri-double-quotes-r"></i>
+        <p>"Bridging Dreams with Reality"</p>
+       
+        
+        <p class="description">Our mentors are not just successful professionals—they're Nepalis who understand your journey and are committed to helping you succeed globally while staying connected to your roots.</p>
+    </div>
+    <div class="stats_container">
+        <!-- For Expert Mentors -->
+        <div class="experts">
+            <i class="ri-account-box-line"></i>
+        <p>6 <span>Expert Mentors</span></p>
+        </div>
+        <!-- for Rating -->
+        <div class="rating"> 
+            <i class="ri-star-line"></i>
+        <p>4.8 <span>Average Rating</span></p>
+        </div>
+        <!-- for Session -->
+         <div class="session">
+            <i class="ri-calendar-todo-line"></i>
+            <p>1,086 <span>Sessions Completed</span></p>
+         </div>
+         <div class="time">
+            <i class="ri-global-line"></i>
+            <p>3 <span>Time Zones</span></p>
+         </div>
+    </div>
+
+    <!--  Servvice Container-->
+      <section class="section">
+  <h2>What You Can Expect</h2>
+  <p class="subtitle">Every session is designed to provide maximum value and actionable insights for your career growth.</p>
+  
+  <div class="cards">
+    <div class="card">
+      <div class="icon"><i class="ri-chat-3-line"></i></div>
+      <h3>Career Guidance</h3>
+      <p>Get personalized advice on career transitions, skill development, and industry insights</p>
+      <div class="time"><i class="ri-time-line"></i>60 minutes</div>
+    </div>
+
+    <div class="card">
+      <div class="icon"><i class="ri-award-line"></i></div>
+      <h3>Portfolio Review</h3>
+      <p>Detailed feedback on your projects, resume, and portfolio to stand out to employers</p>
+      <div class="time"><i class="ri-time-line"></i>60 minutes</div>
+    </div>
+
+    <div class="card">
+      <div class="icon"><i class="ri-camera-line"></i></div>
+      <h3>Mock Interviews</h3>
+      <p>Practice technical and behavioral interviews with real industry professionals</p>
+      <div class="time"><i class="ri-time-line"></i>60 minutes</div>
+    </div>
+
+    <div class="card">
+      <div class="icon"><i class="ri-briefcase-line"></i></div>
+      <h3>Industry Insights</h3>
+      <p>Learn about latest trends, technologies, and opportunities in your field</p>
+      <div class="time"><i class="ri-time-line"></i>60 minutes</div>
+    </div>
+  </div>
+
+  <!-- for Mentors Booking -->
+   <div class="descrip">
+     <h2>Our Expert Mentors</h2>
+     <p>Learn from the best. Each mentor brings years of experience and a passion for helping Nepali talent succeed globally.</p>
+   </div>
+
+  <div class="mentors">
+
+    <!-- Mentor 1 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar">PS</div>
+        <div>
+          <h3>Priya Sharma</h3>
+          <div class="title">Senior Software Engineer <i class="ri-building-line"></i> Google</div>
+        </div>
+      </div>
+      <div class="location"><i class="ri-map-pin-line"></i> Mountain View, CA</div>
+      <p class="desc">Former tech lead at Google with expertise in scalable systems. Passionate about mentoring Nepali developers to land FAANG jobs.</p>
+      <div class="tags">
+        <span class="tag">Google TLM</span>
+        <span class="tag">Tech Speaker</span>
+        <span class="tag">Open Source</span>
+      </div>
+      <p class="info"><i class="ri-earth-line"></i> English, Hindi, Nepali</p>
+      <p class="info"><i class="ri-time-line"></i> 8+ years</p>
+      <p class="info stars"><i class="ri-star-s-fill"></i> 4.9 • 240 sessions</p>
+      <p class="price">NPR 3,500 /hour</p>
+      <button class="book-btn">Book Session</button>
+    </div>
+
+    <!-- Mentor 2 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar">RT</div>
+        <div>
+          <h3>Rajesh Thapa</h3>
+          <div class="title">Principal Data Scientist <i class="ri-building-line"></i> Microsoft</div>
+        </div>
+      </div>
+      <div class="location"><i class="ri-map-pin-line"></i> Seattle, WA</div>
+      <p class="desc">Helps aspiring data scientists build strong AI foundations.</p>
+      <div class="tags">
+        <span class="tag">Microsoft MVP</span>
+        <span class="tag">PhD in ML</span>
+        <span class="tag">Research</span>
+      </div>
+      <p class="info"><i class="ri-earth-line"></i> English, Nepali</p>
+      <p class="info"><i class="ri-time-line"></i> 10+ years</p>
+      <p class="info stars"><i class="ri-star-s-fill"></i> 4.8 • 189 sessions</p>
+      <p class="price">NPR 4,000 /hour</p>
+      <button class="book-btn">Book Session</button>
+    </div>
+
+    <!-- Mentor 3 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar">NK</div>
+        <div>
+          <h3>Nisha Karki</h3>
+          <div class="title">UX Designer <i class="ri-building-line"></i> Adobe</div>
+        </div>
+      </div>
+      <div class="location"><i class="ri-map-pin-line"></i> San Francisco, CA</div>
+      <p class="desc">Specialist in product design, accessibility and research.</p>
+      <div class="tags">
+        <span class="tag">Figma</span>
+        <span class="tag">UX Research</span>
+        <span class="tag">Design Systems</span>
+      </div>
+      <p class="info"><i class="ri-earth-line"></i> English, Nepali</p>
+      <p class="info"><i class="ri-time-line"></i> 6+ years</p>
+      <p class="info stars"><i class="ri-star-s-fill"></i> 4.7 • 150 sessions</p>
+      <p class="price">NPR 3,200 /hour</p>
+      <button class="book-btn">Book Session</button>
+    </div>
+
+    <!-- Mentor 4 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar">SB</div>
+        <div>
+          <h3>Sudip Basnet</h3>
+          <div class="title">DevOps Engineer <i class="ri-building-line"></i> AWS</div>
+        </div>
+      </div>
+      <div class="location"><i class="ri-map-pin-line"></i> New York, NY</div>
+      <p class="desc">Expert in CI/CD, cloud automation, Kubernetes & Terraform.</p>
+      <div class="tags">
+        <span class="tag">AWS</span>
+        <span class="tag">Kubernetes</span>
+        <span class="tag">Terraform</span>
+      </div>
+      <p class="info"><i class="ri-earth-line"></i> English, Nepali</p>
+      <p class="info"><i class="ri-time-line"></i> 7+ years</p>
+      <p class="info stars"><i class="ri-star-s-fill"></i> 4.6 • 180 sessions</p>
+      <p class="price">NPR 3,800 /hour</p>
+      <button class="book-btn">Book Session</button>
+    </div>
+
+    <!-- Mentor 5 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar">AM</div>
+        <div>
+          <h3>Anjali Mishra</h3>
+          <div class="title">AI Researcher <i class="ri-building-line"></i> OpenAI</div>
+        </div>
+      </div>
+      <div class="location"><i class="ri-map-pin-line"></i> Remote</div>
+      <p class="desc">Works on NLP, ethical AI, and social impact through technology.</p>
+      <div class="tags">
+        <span class="tag">NLP</span>
+        <span class="tag">Python</span>
+        <span class="tag">AI Ethics</span>
+      </div>
+      <p class="info"><i class="ri-earth-line"></i> English, Hindi</p>
+      <p class="info"><i class="ri-time-line"></i> 5+ years</p>
+      <p class="info stars"><i class="ri-star-s-fill"></i> 4.9 • 220 sessions</p>
+      <p class="price">NPR 4,200 /hour</p>
+      <button class="book-btn">Book Session</button>
+    </div>
+
+    <!-- Mentor 6 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="avatar">RK</div>
+        <div>
+          <h3>Rabin Khadka</h3>
+          <div class="title">Cybersecurity Analyst <i class="ri-building-line"></i> Cisco</div>
+        </div>
+      </div>
+      <div class="location"><i class="ri-map-pin-line"></i> Toronto, Canada</div>
+      <p class="desc">Passionate about threat analysis and security awareness training.</p>
+      <div class="tags">
+        <span class="tag">Ethical Hacking</span>
+        <span class="tag">SOC Expert</span>
+        <span class="tag">Cyber Defense</span>
+      </div>
+      <p class="info"><i class="ri-earth-line"></i> English, Nepali</p>
+      <p class="info"><i class="ri-time-line"></i> 6+ years</p>
+      <p class="info stars"><i class="ri-star-s-fill"></i> 4.5 • 130 sessions</p>
+      <p class="price">NPR 3,000 /hour</p>
+      <button class="book-btn">Book Session</button>
+    </div>
+
+  </div>
+</section>
+<!-- footer section -->
+ <footer class="footer">
+
+  <!-- Top Row -->
+  <div class="footer-top">
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+      <h3>Subscribe to our Newsletter</h3>
+      <p>Get updates about new courses and offers.</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="course.html">Courses</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Join Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Support / FAQ -->
+    <div class="footer-support">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="course.html#faq-center">FAQ</a></li>
+        <li><a href="contact.html#help">Help</a></li>
+        <li><a href="about.html#">Our Journey</a></li>
+        <li><a href="about.html#team">Our Team</a></li>
+        
+      </ul>
+    </div>
+
+    <!-- Categories -->
+    <div class="footer-categories">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="programming.html">Programming and Tech</a></li>
+        <li><a href="buisness.html">Business and Marketing</a></li>
+        <li><a href="ui.html">Design and Creativity</a></li>
+        <li><a href="data.html">Data science and AI</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Middle Row -->
+  <div class="footer-middle">
+    <div class="footer-middle-text">
+      <h2><span>Next</span>Gen</h2>
+      <p>NextGen is Nepal’s #1 platform for affordable and future-ready e-learning courses, bridging education and technology for everyone.</p>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-contact">
+      <a href="mailto:info@nextgen.com"><i class="ri-mail-line"></i> info@nextgen.com</a>
+      <a href="https://wa.me/977981234567"><i class="ri-whatsapp-line"></i> +977 981234567</a>
+      <a href="#"><i class="ri-map-pin-line"></i> Kathmandu, Nepal</a>
+    </div>
+
+    <!-- Social Media Icons Row -->
+    <div class="footer-social">
+      <a href="https://www.youtube.com/"><i class="ri-youtube-fill"></i></a>
+      <a href="https://www.facebook.com/"><i class="ri-facebook-fill"></i></a>
+      <a href="https://www.linkedin.com/"><i class="ri-linkedin-fill"></i></a>
+      <a href="https://www.instagram.com/"><i class="ri-instagram-fill"></i></a>
+    </div>
+  </div>
+
+  <!-- Bottom Row -->
+  <div class="footer-bottom">
+    <div>Made in Nepal with 💖</div>
+    <div> <a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a>  | <a href="#">Terms & Conditions</a></div>
+    <div>© 2025 NextGEn. All rights reserved.</div>
+  </div>
+
+</footer>
+
+
+<script>
+//this is code for the nav bar animation
+        // Scroll effect
+    const navbar = document.querySelector("nav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    // Hamburger toggle with slide down effect
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector("nav ul");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+
+  
+
+// Select all Book Session buttons
+const bookButtons = document.querySelectorAll(".book-btn");
+
+bookButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        // Ask for name
+        const name = prompt("Enter your name:");
+        if (!name) return; 
+
+        // Ask for phone number
+        const number = prompt("Enter your phone number:");
+        if (!number) return; 
+
+        // Show alert
+        alert(`Thank you ${name}! We will contact you soon to verify your booking.`);
+
+        // Change button to "Verification Awaiting"
+        btn.innerText = "Verification Awaiting";
+        btn.disabled = true;
+        btn.style.backgroundColor = "gray";
+        btn.style.cursor = "not-allowed";
+    });
+});
+
+
+</script>
+</body>
+</html>
